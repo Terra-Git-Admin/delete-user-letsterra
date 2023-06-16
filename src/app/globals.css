@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: clash;
-    font-weight: 400;
-    src: url(./assets/fonts/ClashGrotesk-Medium.otf) format("otf");
-  }
-}
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -30,7 +24,7 @@ body {
 }
 
 .bg-image {
-  background-image: url("./assets/bg-image.png");
+  background-image: url("./assets/images/bg-image.jpg");
 }
 
 
