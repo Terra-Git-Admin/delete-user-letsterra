@@ -21,6 +21,7 @@ export default function Content() {
   }
 
   const handleDelete = (e) => {
+    console.log("Delete pressed")
     let myHeaders = new Headers()
     myHeaders.append("Content-Type", "application/json")
 
@@ -50,6 +51,9 @@ export default function Content() {
           user_input: userInput,
         })
       })
+
+      setUserInput('')
+      setCheckbox(!checkbox)
   }
 
   return (
@@ -74,7 +78,7 @@ export default function Content() {
             type="checkbox"
             className="  border-[#ff1616] border-2 h-5 w-5 bg-slate-800 "
             onChange={handleCheckboxChange}
-            value={checkbox}
+            checked={checkbox}
           />
           <span className="text-sm">I undrstand that all my data on Terra will be deleted</span>
         </label>

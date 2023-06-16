@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <div className="bg-image" style={clashGroteskLight.style}>
       <div className="flex flex-col justify-between  min-h-[100vh] w-[100%]">
-        <div className="flex justify-around items-center h-28 bg-black">
-          <img src={redLogo.src} alt="terra-logo " className="w-44" />
+        <div className="flex justify-around items-center h-24 md:h-28 bg-black">
+          <img src={redLogo.src} alt="terra-logo " className="w-36 md:w-44" />
           <div
-            className="  font-bold text-xl text-[#2b2a2a] md:hover:scale-105 transition "
+            className="  font-bold text-base md:text-xl text-[#2b2a2a] md:hover:scale-105 transition "
             style={clashGroteskMedium.style}
           >
             <Link href="https://www.letsterra.com/">
@@ -35,7 +35,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="h-28 bg-[#d3b83e] flex justify-center items-center  text-[#383838] ">
+        <div className=" h-24 md:h-28 bg-[#d3b83e] flex justify-center items-center  text-[#383838] ">
           <div className="flex flex-col justify-center items-center">
             <a className="underline font-bold " style={clashGroteskMedium.style} href="mailto: hello@letsterra.com">
               hello@letsterra.com
