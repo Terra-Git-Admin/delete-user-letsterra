@@ -80,7 +80,7 @@ export default function Content() {
             onChange={handleCheckboxChange}
             checked={checkbox}
           />
-          <span className="text-sm">I undrstand that all my data on Terra will be deleted</span>
+          <span className="text-sm">I understand that all my data on Terra will be deleted.</span>
         </label>
       </div>
       <div className="w-[100%]" style={clashGroteskMedium.style}>
