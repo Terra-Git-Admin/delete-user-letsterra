@@ -9,20 +9,47 @@ const clashGroteskMedium = localFont({ src: "../assets/fonts/ClashGrotesk-Medium
 const clashGroteskBold = localFont({ src: "../assets/fonts/ClashGrotesk-Bold.otf" })
 
 export default function Content() {
-  const [username, setUsername] = useState("")
+  const [userInput, setUserInput] = useState("")
   const [checkbox, setCheckbox] = useState(false)
 
   const handleUserInput = (e) => {
-    setUsername(e.target.value)
+    setUserInput(e.target.value)
   }
 
   const handleCheckboxChange = (e) => {
-   
     setCheckbox(e.target.checked)
   }
 
   const handleDelete = (e) => {
-    console.log('Delete')
+    let myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
+
+    let raw = JSON.stringify({
+      userInput: userInput,
+    })
+
+    let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    }
+
+    fetch("https://wwwserver.playshifu.com/terra/subscribeemail", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        dataLayer.push({
+          event: "DeleteRequestSent",
+          user_input: userInput,
+        })
+      })
+      .catch((error) => {
+        console.log("error", error)
+        dataLayer.push({
+          event: "DeleteRequestSent",
+          user_input: userInput,
+        })
+      })
   }
 
   return (
@@ -34,8 +61,10 @@ export default function Content() {
         <h1 className="text-sm">Username / Invite Code*</h1>
         <input
           type="text"
-          className={`bg-black  border-[1px]  w-[100%] p-2 focus:outline-none ${username? "border-[#ff1616]" :"border-[#414141]" } `}
-          value={username}
+          className={`bg-black  border-[1px]  w-[100%] p-2 focus:outline-none ${
+            userInput ? "border-[#ff1616]" : "border-[#414141]"
+          } `}
+          value={userInput}
           onChange={handleUserInput}
         />
       </div>
@@ -51,8 +80,16 @@ export default function Content() {
         </label>
       </div>
       <div className="w-[100%]" style={clashGroteskMedium.style}>
-        {(!username || !checkbox )&& <button disabled className="bg-gray-600 w-[100%] p-2 font-clashGrotesk ">Delete Your Terra Account</button>}
-        {username && checkbox && <button className="bg-red-600 w-[100%] p-2 font-clashGrotesk " onClick={handleDelete} >Delete Your Terra Account</button>}
+        {(!userInput || !checkbox) && (
+          <button disabled className="bg-gray-600 w-[100%] p-2 font-clashGrotesk ">
+            Delete Your Terra Account
+          </button>
+        )}
+        {userInput && checkbox && (
+          <button className="bg-red-600 w-[100%] p-2 font-clashGrotesk " onClick={handleDelete}>
+            Delete Your Terra Account
+          </button>
+        )}
       </div>
     </div>
   )
