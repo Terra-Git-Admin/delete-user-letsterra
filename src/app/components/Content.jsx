@@ -25,9 +25,12 @@ export default function Content() {
     let myHeaders = new Headers()
     myHeaders.append("Content-Type", "application/json")
 
+    // let raw = JSON.stringify({
+    //   userInput: userInput,
+    // })
     let raw = JSON.stringify({
-      userInput: userInput,
-    })
+      email: userInput,
+    });
 
     let requestOptions = {
       method: "POST",
@@ -36,7 +39,23 @@ export default function Content() {
       redirect: "follow",
     }
 
-    fetch("https://wwwserver.playshifu.com/terra/subscribeemail", requestOptions)
+    // fetch("https://wwwserver.playshifu.com/terra/subscribeemail", requestOptions)
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     dataLayer.push({
+    //       event: "DeleteRequestSent",
+    //       user_input: userInput,
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.log("error", error)
+    //     dataLayer.push({
+    //       event: "DeleteRequestSent",
+    //       user_input: userInput,
+    //     })
+    //   })
+
+      fetch("http://terra-api-test.playshifu.com/v21/subscribe", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         dataLayer.push({
