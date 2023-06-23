@@ -25,9 +25,6 @@ export default function Content() {
     let myHeaders = new Headers()
     myHeaders.append("Content-Type", "application/json")
 
-    // let raw = JSON.stringify({
-    //   userInput: userInput,
-    // })
     let raw = JSON.stringify({
       email: userInput,
     });
@@ -39,23 +36,7 @@ export default function Content() {
       redirect: "follow",
     }
 
-    // fetch("https://wwwserver.playshifu.com/terra/subscribeemail", requestOptions)
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     dataLayer.push({
-    //       event: "DeleteRequestSent",
-    //       user_input: userInput,
-    //     })
-    //   })
-    //   .catch((error) => {
-    //     console.log("error", error)
-    //     dataLayer.push({
-    //       event: "DeleteRequestSent",
-    //       user_input: userInput,
-    //     })
-    //   })
-
-      fetch("http://terra-api-test.playshifu.com/v21/subscribe", requestOptions)
+      fetch("http://terra-api-test.letsterra.com/v22/deleteUser", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         dataLayer.push({
@@ -73,6 +54,7 @@ export default function Content() {
 
       setUserInput('')
       setCheckbox(!checkbox)
+      alert("Delete Reqeust Sent")
   }
 
   return (
@@ -109,7 +91,7 @@ export default function Content() {
           </button>
         )}
         {userInput && checkbox && (
-          <button className="bg-red-600 w-[100%] p-2 font-clashGrotesk " onClick={handleDelete}>
+          <button className="bg-red-600 w-[100%] p-2 font-clashGrotesk " onClick={handleDelete}  >
             Delete Your Terra Account
           </button>
         )}
