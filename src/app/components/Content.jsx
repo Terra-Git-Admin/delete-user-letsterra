@@ -36,7 +36,7 @@ export default function Content() {
       redirect: "follow",
     }
 
-      fetch("https://terra-api-test.letsterra.com/v22/deleteUser", requestOptions)
+      fetch("https://terra-api-test.letsterra.com/v26/deleteUser", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         dataLayer.push({
